@@ -3,13 +3,10 @@ import styles from "../styles/components/ChallengeBox.module.scss";
 import { ChallengesContext } from "../contexts/ChallengesContext";
 import { CountdownContext } from "../contexts/CountdownContext";
 export default function ChallengeBox() {
-  const {
-    activeChallenge,
-    resetChallenge,
-    isActive,
-    completeChallenge,
-  } = useContext(ChallengesContext);
-  const { resetCountdown } = useContext(CountdownContext);
+  const { activeChallenge, resetChallenge, completeChallenge } = useContext(
+    ChallengesContext
+  );
+  const { resetCountdown, isActive } = useContext(CountdownContext);
 
   const hasActiveCycle = false;
 

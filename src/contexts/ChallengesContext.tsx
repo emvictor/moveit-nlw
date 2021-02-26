@@ -1,12 +1,46 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, ReactNode } from "react";
 import challenges from "../../challenges.json";
+import Cookies from "js-cookie";
+export const ChallengesContext = createContext({} as ChallengesContextData);
 
-export const ChallengesContext = createContext({});
+interface Challenge {
+  type: "body" | "eye";
+  description: string;
+  amount: number;
+}
 
-export default function ChallengesProvider({ children, ...props }) {
-  const [level, setLevel] = useState(1);
-  const [currentExperience, setCurrentExperience] = useState(0);
-  const [challengesCompleted, setChallengesCompleted] = useState(0);
+interface ChallengesContextData {
+  level: number;
+  currentExperience: number;
+  experienceToNextLevel: number;
+  challengesCompleted: number;
+  activeChallenge: Challenge;
+  hasFinished: boolean;
+  counterTime: number;
+  levelUp: () => void;
+  resetChallenge: () => void;
+  completeChallenge: () => void;
+  setNewChallenge: () => void;
+  setHasFinished: any;
+}
+
+interface ChallengeProviderProps {
+  children: ReactNode;
+  level: number;
+  currentExperience: number;
+  challengesCompleted: number;
+}
+export default function ChallengesProvider({
+  children,
+  ...props
+}: ChallengeProviderProps) {
+  const [level, setLevel] = useState(props.level ?? 1);
+  const [currentExperience, setCurrentExperience] = useState(
+    props.currentExperience ?? 0
+  );
+  const [challengesCompleted, setChallengesCompleted] = useState(
+    props.challengesCompleted ?? 0
+  );
 
   const [hasFinished, setHasFinished] = useState(false);
   const [activeChallenge, setActiveChallenge] = useState(null);
@@ -16,6 +50,12 @@ export default function ChallengesProvider({ children, ...props }) {
   useEffect(() => {
     Notification.requestPermission();
   }, []);
+
+  useEffect(() => {
+    Cookies.set("level", String(level));
+    Cookies.set("currentExperience", String(currentExperience));
+    Cookies.set("challengesCompleted", String(challengesCompleted));
+  }, [level, currentExperience, challengesCompleted]);
 
   function levelUp() {
     setLevel(level + 1);
