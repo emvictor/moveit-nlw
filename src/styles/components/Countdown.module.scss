@@ -1,0 +1,78 @@
+$white: #fff;
+$background: #f2f3f5;
+$gray-line: #dcdde0;
+$text: #666;
+$text-highlight: #b3b9ff;
+$title: #2e384d;
+$red: #e83f5b;
+$green: #4cd62b;
+$blue: #5965e0;
+$blue-dark: #4953b8;
+$blue-twitter: #2aa9e0;
+
+.countdownContainer {
+  display: flex;
+  align-items: center;
+  font-family: Rajdhani;
+  font-weight: 600;
+  color: $title;
+
+  div {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background: $white;
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.05);
+    border-radius: 5px;
+    font-size: 8.5rem;
+    text-align: center;
+    span {
+      flex: 1;
+      &:first-child {
+        border-right: 1px solid #f0f1f3;
+      }
+      &:last-child {
+        border-left: 1px solid #f0f1f3;
+      }
+    }
+  }
+}
+
+.countdownContainer > span {
+  font-size: 6.25rem;
+  margin: 0 0.5rem;
+}
+
+.countdownButton {
+  width: 100%;
+  height: 5rem;
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 5px;
+  background: $blue;
+  color: $white;
+  font-size: 1.25rem;
+  font-weight: 600;
+  transition: background-color 0.2s;
+  &:not(:disabled):hover {
+    background: $blue-dark;
+  }
+  &:disabled {
+    background: $white;
+    color: $text;
+    cursor: not-allowed;
+  }
+}
+
+.countdownButtonActive {
+  background: $white;
+  color: $title;
+  &:not(:disabled):hover {
+    background: $red;
+    color: $white;
+  }
+}

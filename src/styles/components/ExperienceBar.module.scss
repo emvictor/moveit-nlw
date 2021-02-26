@@ -1,0 +1,42 @@
+$white: #fff;
+$background: #f2f3f5;
+$gray-line: #dcdde0;
+$text: #666;
+$text-highlight: #b3b9ff;
+$title: #2e384d;
+$red: #e83f5b;
+$green: #4cd62b;
+$blue: #5965e0;
+$blue-dark: #4953b8;
+$blue-twitter: #2aa9e0;
+
+.experienceBar {
+  display: flex;
+  align-items: center;
+
+  span {
+    font-size: 1rem;
+  }
+
+  div {
+    flex: 1;
+    height: 4px;
+    border-radius: 4px;
+    background: $gray-line;
+    margin: 0 1.5rem;
+    position: relative;
+
+    div {
+      height: 4px;
+      border-radius: 4px;
+      margin: 0;
+      background: $green;
+    }
+
+    span.currentExperience {
+      position: absolute;
+      top: 12px;
+      transform: translateX(-50%);
+    }
+  }
+}
