@@ -46,7 +46,7 @@ export default function ChallengesProvider({
 
   const [hasFinished, setHasFinished] = useState(false);
   const [activeChallenge, setActiveChallenge] = useState(null);
-  const counterTime = 0.05 * 60;
+  const counterTime = 25 * 60;
   const experienceToNextLevel = Math.pow((level + 1) * 4, 2);
   const [isLevelUpModalOpen, setIsLevelUpModalOpen] = useState(false);
 
